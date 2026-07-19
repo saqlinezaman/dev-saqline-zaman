@@ -1,1219 +1,1618 @@
 <!doctype html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Md. Saqline Zaman — Full-Stack Web Developer</title>
+    <meta
+      name="description"
+      content="Portfolio of Md. Saqline Zaman, Full-Stack Web Developer specializing in JavaScript, PHP, Laravel, React and WordPress."
+    />
 
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Md. Saqline Zaman — Full-Stack Web Developer</title>
-  <meta name="description"
-    content="Portfolio of Md. Saqline Zaman, Full-Stack Web Developer specializing in JavaScript, PHP, Laravel, React and WordPress." />
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+    />
 
-  <!-- Fonts -->
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link
-    href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap"
-    rel="stylesheet" />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" />
-  
-  <link rel="icon" type="image/png" href="./images/favicon.png" />
+    <link rel="icon" type="image/png" href="./images/favicon.png" />
 
-  <!-- Tailwind -->
-  <script src="https://cdn.tailwindcss.com"></script>
-  <script>
-    tailwind.config = {
-      theme: {
-        extend: {
-          colors: {
-            bg: "#030303",
-            elevated: "#0c0c10",
-            card: "#0f0f14",
-            purple: {
-              DEFAULT: "#8B5CF6",
-              deep: "#4C1D95",
-              glow: "#C4B5FD",
-              dim: "#2E1065",
+    <!-- Tailwind -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              bg: "#030303",
+              elevated: "#0c0c10",
+              card: "#0f0f14",
+              purple: {
+                DEFAULT: "#8B5CF6",
+                deep: "#4C1D95",
+                glow: "#C4B5FD",
+                dim: "#2E1065",
+              },
+              ink: "#F5F5F7",
+              muted: "#8A8A94",
+              line: "rgba(139,92,246,0.16)",
             },
-            ink: "#F5F5F7",
-            muted: "#8A8A94",
-            line: "rgba(139,92,246,0.16)",
-          },
-          fontFamily: {
-            display: ['"Space Grotesk"', "sans-serif"],
-            body: ["Inter", "sans-serif"],
-            mono: ['"JetBrains Mono"', "monospace"],
+            fontFamily: {
+              display: ['"Space Grotesk"', "sans-serif"],
+              body: ["Inter", "sans-serif"],
+              mono: ['"JetBrains Mono"', "monospace"],
+            },
           },
         },
-      },
-    };
-  </script>
+      };
+    </script>
 
-  <!-- GSAP -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+    <!-- GSAP -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
 
-  <style>
-    * {
-      cursor: none;
-    }
+    <style>
+      * {
+        cursor: none;
+      }
 
-    html {
-      scroll-behavior: smooth;
-    }
+      html {
+        scroll-behavior: smooth;
+      }
 
-    body {
-      background: #030303;
-      color: #f5f5f7;
-      font-family: "Inter", sans-serif;
-      overflow-x: hidden;
-    }
+      body {
+        background: #030303;
+        color: #f5f5f7;
+        font-family: "Inter", sans-serif;
+        overflow-x: hidden;
+      }
 
-    ::selection {
-      background: #8b5cf6;
-      color: #030303;
-    }
+      ::selection {
+        background: #8b5cf6;
+        color: #030303;
+      }
 
-    /* ---------- Custom circular cursor ---------- */
-    #cursor-dot,
-    #cursor-ring {
-      position: fixed;
-      top: 0;
-      left: 0;
-      pointer-events: none;
-      border-radius: 50%;
-      z-index: 9999;
-      transform: translate(-50%, -50%);
-    }
-
-    #cursor-dot {
-      width: 6px;
-      height: 6px;
-      background: #c4b5fd;
-    }
-
-    #cursor-ring {
-      width: 36px;
-      height: 36px;
-      border: 1px solid rgba(0, 251, 42, 0.829);
-      transition:
-        width 0.25s ease,
-        height 0.25s ease,
-        border-color 0.25s ease,
-        background 0.25s ease;
-    }
-
-    #cursor-ring.hovered {
-      width: 64px;
-      height: 64px;
-      background: rgba(5, 38, 253, 0.08);
-      border-color: #c4b5fd;
-    }
-
-    @media (max-width: 768px) {
-
+      /* ---------- Custom circular cursor ---------- */
       #cursor-dot,
       #cursor-ring {
-        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        pointer-events: none;
+        border-radius: 50%;
+        z-index: 9999;
+        transform: translate(-50%, -50%);
       }
 
-      * {
-        cursor: auto;
+      #cursor-dot {
+        width: 6px;
+        height: 6px;
+        background: #c4b5fd;
       }
-    }
 
-    /* nav */
+      #cursor-ring {
+        width: 36px;
+        height: 36px;
+        border: 1px solid rgba(0, 251, 42, 0.829);
+        transition:
+          width 0.25s ease,
+          height 0.25s ease,
+          border-color 0.25s ease,
+          background 0.25s ease;
+      }
 
-    .mobile-menu {
-      position: fixed;
-      top: 0;
-      right: 0;
-      height: 100vh;
-      width: 75%;
-      max-width: 300px;
-      background-color: #000000;
-      color: #c4b5fd;
-      transform: translateX(100%);
-      transition: transform 0.4s ease-in-out;
-      z-index: 50;
-      display: flex;
-      flex-direction: column;
-    }
+      #cursor-ring.hovered {
+        width: 64px;
+        height: 64px;
+        background: rgba(5, 38, 253, 0.08);
+        border-color: #c4b5fd;
+      }
 
-    .mobile-menu.show {
-      transform: translateX(0);
-    }
+      @media (max-width: 768px) {
+        #cursor-dot,
+        #cursor-ring {
+          display: none;
+        }
 
-    .mobile-menu-top {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 20px;
-      border-bottom: 1px solid rgba(196, 181, 253, 0.2);
-    }
+        * {
+          cursor: auto;
+        }
+      }
 
-    .mobile-menu-logo {
-      font-size: 18px;
-      font-weight: 600;
-      color: #ffffff;
-    }
+      /* nav */
 
-    .mobile-menu-close {
-      background: none;
-      border: none;
-      color: #c4b5fd;
-      font-size: 32px;
-      line-height: 1;
-      cursor: pointer;
-    }
+      .mobile-menu {
+        position: fixed;
+        top: 0;
+        right: 0;
+        height: 100vh;
+        width: 75%;
+        max-width: 300px;
+        background-color: #000000;
+        color: #c4b5fd;
+        transform: translateX(100%);
+        transition: transform 0.4s ease-in-out;
+        z-index: 50;
+        display: flex;
+        flex-direction: column;
+      }
 
-    .mobile-menu-links {
-      display: flex;
-      flex-direction: column;
-      padding: 20px;
-      gap: 20px;
-    }
+      .mobile-menu.show {
+        transform: translateX(0);
+      }
 
-    .mobile-menu-links a {
-      color: #c4b5fd;
-      text-decoration: none;
-      font-size: 18px;
-    }
+      .mobile-menu-top {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 20px;
+        border-bottom: 1px solid rgba(196, 181, 253, 0.2);
+      }
 
-    /* ---------- Grain / noise atmosphere ---------- */
-    .noise {
-      position: fixed;
-      inset: 0;
-      pointer-events: none;
-      z-index: 1;
-      opacity: 0.035;
-      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
-    }
+      .mobile-menu-logo {
+        font-size: 18px;
+        font-weight: 600;
+        color: #ffffff;
+      }
 
-    .eyebrow {
-      font-family: "JetBrains Mono", monospace;
-      font-size: 0.8rem;
-      letter-spacing: 0.02em;
-      color: #c4b5fd;
-    }
+      .mobile-menu-close {
+        background: none;
+        border: none;
+        color: #c4b5fd;
+        font-size: 32px;
+        line-height: 1;
+        cursor: pointer;
+      }
 
-    .eyebrow::before {
-      content: "<";
-      opacity: 0.6;
-    }
+      .mobile-menu-links {
+        display: flex;
+        flex-direction: column;
+        padding: 20px;
+        gap: 20px;
+      }
 
-    .eyebrow::after {
-      content: "/>";
-      opacity: 0.6;
-    }
+      .mobile-menu-links a {
+        color: #c4b5fd;
+        text-decoration: none;
+        font-size: 18px;
+      }
 
-    .grad-text {
-      background: linear-gradient(120deg,
+      /* ---------- Grain / noise atmosphere ---------- */
+      .noise {
+        position: fixed;
+        inset: 0;
+        pointer-events: none;
+        z-index: 1;
+        opacity: 0.035;
+        background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+      }
+
+      .eyebrow {
+        font-family: "JetBrains Mono", monospace;
+        font-size: 0.8rem;
+        letter-spacing: 0.02em;
+        color: #c4b5fd;
+      }
+
+      .eyebrow::before {
+        content: "<";
+        opacity: 0.6;
+      }
+
+      .eyebrow::after {
+        content: "/>";
+        opacity: 0.6;
+      }
+
+      .grad-text {
+        background: linear-gradient(
+          120deg,
           #f5f5f7 30%,
           #c4b5fd 65%,
-          #8b5cf6 100%);
-      -webkit-background-clip: text;
-      background-clip: text;
-      color: transparent;
-    }
-
-    .glow-border {
-      border: 1px solid rgba(139, 92, 246, 0.16);
-    }
-
-    .window-card {
-      background: linear-gradient(180deg, #0f0f14 0%, #0a0a0d 100%);
-      border: 1px solid rgba(139, 92, 246, 0.14);
-      transition:
-        border-color 0.35s ease,
-        transform 0.35s ease,
-        box-shadow 0.35s ease;
-    }
-
-    .window-card:hover {
-      border-color: rgba(139, 92, 246, 0.55);
-      transform: translateY(-6px);
-      box-shadow: 0 20px 60px -20px rgba(139, 92, 246, 0.35);
-    }
-
-    .dot {
-      width: 9px;
-      height: 9px;
-      border-radius: 50%;
-    }
-
-    .timeline-line {
-      background: linear-gradient(180deg, #8b5cf6, rgba(139, 92, 246, 0));
-    }
-
-    .photo-frame {
-      position: relative;
-      border: 1px dashed rgba(139, 92, 246, 0.4);
-      background:
-        radial-gradient(circle at 30% 20%,
-          rgba(139, 92, 246, 0.15),
-          transparent 60%),
-        #0a0a0d;
-        
-    }
-
-    .nav-link {
-      position: relative;
-      font-family: "JetBrains Mono", monospace;
-      font-size: 0.85rem;
-    }
-
-    .nav-link::after {
-      content: "";
-      position: absolute;
-      left: 0;
-      bottom: -4px;
-      width: 0%;
-      height: 1px;
-      background: #c4b5fd;
-      transition: width 0.3s ease;
-    }
-
-    .nav-link:hover::after {
-      width: 100%;
-    }
-
-    .reveal {
-      opacity: 0;
-    }
-
-    .split-char {
-      display: inline-block;
-    }
-
-    .btn-primary {
-      background: #8b5cf6;
-      color: #030303;
-      transition:
-        background 0.3s ease,
-        transform 0.3s ease,
-        box-shadow 0.3s ease;
-    }
-
-    .btn-primary:hover {
-      background: #c4b5fd;
-      box-shadow: 0 10px 30px -8px rgba(139, 92, 246, 0.6);
-    }
-
-    .btn-outline {
-      border: 1px solid rgba(139, 92, 246, 0.4);
-      color: #f5f5f7;
-      transition:
-        border-color 0.3s ease,
-        background 0.3s ease;
-    }
-
-    .btn-outline:hover {
-      border-color: #c4b5fd;
-      background: rgba(139, 92, 246, 0.08);
-    }
-
-    .scroll-cue {
-      width: 1px;
-      height: 60px;
-      background: linear-gradient(180deg, #8b5cf6, transparent);
-    }
-
-    @keyframes whatsappPulse {
-      0% {
-        box-shadow: 0 0 0 0 rgba(157, 120, 248, 0.7);
+          #8b5cf6 100%
+        );
+        -webkit-background-clip: text;
+        background-clip: text;
+        color: transparent;
       }
 
-      70% {
-        box-shadow: 0 0 0 18px rgba(157, 120, 248, 0);
+      .glow-border {
+        border: 1px solid rgba(139, 92, 246, 0.16);
       }
 
-      100% {
-        box-shadow: 0 0 0 0 rgba(157, 120, 248, 0);
+      .window-card {
+        background: linear-gradient(180deg, #0f0f14 0%, #0a0a0d 100%);
+        border: 1px solid rgba(139, 92, 246, 0.14);
+        transition:
+          border-color 0.35s ease,
+          transform 0.35s ease,
+          box-shadow 0.35s ease;
       }
-    }
 
-    .whatsapp-float {
-      animation: whatsappPulse 2s infinite;
-    }
-      .ball-box{
-    position: relative;
-    width: 100%;
-    height: 260px;
-    overflow: hidden;
-    border-radius: 1.25rem;
-    background: radial-gradient(circle at 50% 0%, rgba(196,181,253,0.08), transparent 70%),
-                rgba(255,255,255,0.015);
-    border: 1px solid rgba(196,181,253,0.1);
-  }
+      .window-card:hover {
+        border-color: rgba(139, 92, 246, 0.55);
+        transform: translateY(-6px);
+        box-shadow: 0 20px 60px -20px rgba(139, 92, 246, 0.35);
+      }
 
-  .skill-ball{
-    position: absolute;
-    top: 0; left: 0;
-    width: 60px;
-    height: 60px;
-    border-radius: 50%;
-    box-sizing: border-box;
-    padding: 2px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background: linear-gradient(145deg, rgba(196,181,253,0.9), rgba(139,120,246,0.55));
-    border: 1px solid rgba(255,255,255,0.35);
-    box-shadow:
-      0 8px 20px rgba(139,120,246,0.35),
-      0 0 0 1px rgba(196,181,253,0.15),
-      inset 0 1px 1px rgba(255,255,255,0.4);
-    cursor: grab;
-    user-select: none;
-    touch-action: none;
-    will-change: transform;
-    overflow: hidden;
-    transition: box-shadow 0.25s ease;
-  }
-  .skill-ball:hover{
-    box-shadow:
-      0 10px 26px rgba(139,120,246,0.5),
-      0 0 0 1px rgba(196,181,253,0.3),
-      inset 0 1px 1px rgba(255,255,255,0.5);
-  }
-  .skill-ball:active{ cursor: grabbing; }
+      .dot {
+        width: 9px;
+        height: 9px;
+        border-radius: 50%;
+      }
 
-  .skill-ball img{
-    width: 100%;
-    height: 100%;
-    object-fit: contain;
-    pointer-events: none;
-    -webkit-user-drag: none;
-    border-radius: 50%;
-    background: #fff;
-    padding: 2px;
-  }
+      .timeline-line {
+        background: linear-gradient(180deg, #8b5cf6, rgba(139, 92, 246, 0));
+      }
 
-  @media (max-width: 767px){
-    .ball-box{ height: 220px; }
-    .skill-ball{ width: 52px; height: 52px; }
-  }
-  </style>
-</head>
+      .photo-frame {
+        position: relative;
+        border: 1px dashed rgba(139, 92, 246, 0.4);
+        background:
+          radial-gradient(
+            circle at 30% 20%,
+            rgba(139, 92, 246, 0.15),
+            transparent 60%
+          ),
+          #0a0a0d;
+      }
 
-<body class="bg-bg">
-  <!-- Floating WhatsApp Button -->
-  <a href="https://wa.me/8801728108888" target="_blank" rel="noopener"
-    class="whatsapp-float fixed bottom-6 right-6 z-50 w-14 h-14 rounded-full bg-[#9D78F8] text-white flex items-center justify-center shadow-lg transition-all duration-300 hover:scale-110">
-    <i class="fa-brands fa-whatsapp text-3xl"></i>
-  </a>
-  <div class="noise"></div>
-  <div id="cursor-dot"></div>
-  <div id="cursor-ring"></div>
+      .nav-link {
+        position: relative;
+        font-family: "JetBrains Mono", monospace;
+        font-size: 0.85rem;
+      }
 
-  <!-- ============ NAV ============ -->
-  <nav class="fixed top-0 left-0 w-full z-50 backdrop-blur-md bg-bg/70 border-b border-line">
-    <div class="max-w-6xl mx-auto flex items-center justify-between px-6 md:px-10 py-5">
-      <a href="#home" class="font-display font-semibold text-lg tracking-tight">
-        <img src="./images/logo2.png" alt="Saqline Zaman" class="h-[40px] md:h-[50px] w-[150px] md:w-[200px] rounded-full" /></a>
-      <div class="hidden md:flex items-center gap-8">
-        <a href="#about" class="nav-link">About</a>
-        <a href="#skills" class="nav-link">Skills</a>
-        <a href="#projects" class="nav-link">Projects</a>
-        <a href="#experience" class="nav-link">Experience</a>
-        <a href="#connect" class="nav-link">Connect</a>
+      .nav-link::after {
+        content: "";
+        position: absolute;
+        left: 0;
+        bottom: -4px;
+        width: 0%;
+        height: 1px;
+        background: #c4b5fd;
+        transition: width 0.3s ease;
+      }
+
+      .nav-link:hover::after {
+        width: 100%;
+      }
+
+      .reveal {
+        opacity: 0;
+      }
+
+      .split-char {
+        display: inline-block;
+      }
+
+      .btn-primary {
+        background: #8b5cf6;
+        color: #030303;
+        transition:
+          background 0.3s ease,
+          transform 0.3s ease,
+          box-shadow 0.3s ease;
+      }
+
+      .btn-primary:hover {
+        background: #c4b5fd;
+        box-shadow: 0 10px 30px -8px rgba(139, 92, 246, 0.6);
+      }
+
+      .btn-outline {
+        border: 1px solid rgba(139, 92, 246, 0.4);
+        color: #f5f5f7;
+        transition:
+          border-color 0.3s ease,
+          background 0.3s ease;
+      }
+
+      .btn-outline:hover {
+        border-color: #c4b5fd;
+        background: rgba(139, 92, 246, 0.08);
+      }
+
+      .scroll-cue {
+        width: 1px;
+        height: 60px;
+        background: linear-gradient(180deg, #8b5cf6, transparent);
+      }
+
+      @keyframes whatsappPulse {
+        0% {
+          box-shadow: 0 0 0 0 rgba(157, 120, 248, 0.7);
+        }
+
+        70% {
+          box-shadow: 0 0 0 18px rgba(157, 120, 248, 0);
+        }
+
+        100% {
+          box-shadow: 0 0 0 0 rgba(157, 120, 248, 0);
+        }
+      }
+
+      .whatsapp-float {
+        animation: whatsappPulse 2s infinite;
+      }
+      .ball-box {
+        position: relative;
+        width: 100%;
+        height: 260px;
+        overflow: hidden;
+        border-radius: 1.25rem;
+        background:
+          radial-gradient(
+            circle at 50% 0%,
+            rgba(196, 181, 253, 0.08),
+            transparent 70%
+          ),
+          rgba(255, 255, 255, 0.015);
+        border: 1px solid rgba(196, 181, 253, 0.1);
+      }
+
+      .skill-ball {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 60px;
+        height: 60px;
+        border-radius: 50%;
+        box-sizing: border-box;
+        padding: 2px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: linear-gradient(
+          145deg,
+          rgba(196, 181, 253, 0.9),
+          rgba(139, 120, 246, 0.55)
+        );
+        border: 1px solid rgba(255, 255, 255, 0.35);
+        box-shadow:
+          0 8px 20px rgba(139, 120, 246, 0.35),
+          0 0 0 1px rgba(196, 181, 253, 0.15),
+          inset 0 1px 1px rgba(255, 255, 255, 0.4);
+        cursor: grab;
+        user-select: none;
+        touch-action: none;
+        will-change: transform;
+        overflow: hidden;
+        transition: box-shadow 0.25s ease;
+      }
+      .skill-ball:hover {
+        box-shadow:
+          0 10px 26px rgba(139, 120, 246, 0.5),
+          0 0 0 1px rgba(196, 181, 253, 0.3),
+          inset 0 1px 1px rgba(255, 255, 255, 0.5);
+      }
+      .skill-ball:active {
+        cursor: grabbing;
+      }
+
+      .skill-ball img {
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+        pointer-events: none;
+        -webkit-user-drag: none;
+        border-radius: 50%;
+        background: #fff;
+        padding: 2px;
+      }
+
+      @media (max-width: 767px) {
+        .ball-box {
+          height: 220px;
+        }
+        .skill-ball {
+          width: 52px;
+          height: 52px;
+        }
+      }
+    </style>
+  </head>
+
+  <body class="bg-bg">
+    <!-- Floating WhatsApp Button -->
+    <a
+      href="https://wa.me/8801728108888"
+      target="_blank"
+      rel="noopener"
+      class="whatsapp-float fixed bottom-6 right-6 z-50 w-14 h-14 rounded-full bg-[#9D78F8] text-white flex items-center justify-center shadow-lg transition-all duration-300 hover:scale-110"
+    >
+      <i class="fa-brands fa-whatsapp text-3xl"></i>
+    </a>
+    <div class="noise"></div>
+    <div id="cursor-dot"></div>
+    <div id="cursor-ring"></div>
+
+    <!-- ============ NAV ============ -->
+    <nav
+      class="fixed top-0 left-0 w-full z-50 backdrop-blur-md bg-bg/70 border-b border-line"
+    >
+      <div
+        class="max-w-6xl mx-auto flex items-center justify-between px-6 md:px-10 py-5"
+      >
+        <a
+          href="#home"
+          class="font-display font-semibold text-lg tracking-tight"
+        >
+          <img
+            src="./images/logo2.png"
+            alt="Saqline Zaman"
+            class="h-[40px] md:h-[50px] w-[150px] md:w-[200px] rounded-full"
+        /></a>
+        <div class="hidden md:flex items-center gap-8">
+          <a href="#about" class="nav-link">About</a>
+          <a href="#skills" class="nav-link">Skills</a>
+          <a href="#projects" class="nav-link">Projects</a>
+          <a href="#experience" class="nav-link">Experience</a>
+          <a href="#connect" class="nav-link">Connect</a>
+        </div>
+        <a
+          href="https://www.linkedin.com/in/saqlinezamanmoaz/"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="btn-primary hidden md:inline-block px-5 py-2 rounded-full text-sm font-medium"
+          >Hire Me</a
+        >
+        <button id="menu-btn" class="md:hidden text-ink">
+          <svg
+            width="24"
+            height="24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="1.5"
+          >
+            <path d="M3 6h18M3 12h18M3 18h18" />
+          </svg>
+        </button>
       </div>
-      <a href="https://www.linkedin.com/in/saqlinezamanmoaz/" target="_blank" rel="noopener noreferrer" class="btn-primary hidden md:inline-block px-5 py-2 rounded-full text-sm font-medium">Hire
-        Me</a>
-      <button id="menu-btn" class="md:hidden text-ink">
-        <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.5">
-          <path d="M3 6h18M3 12h18M3 18h18" />
-        </svg>
-      </button>
-    </div>
-    <div id="mobile-menu" class="mobile-menu">
-      <!-- Top bar: Logo + Close button -->
-      <div class="mobile-menu-top">
-        <span class="mobile-menu-logo">
-          <img src="./images/logo3.png" href="#home" alt="Saqline Zaman" class="h-[50px] w-[50px] rounded-full" />
-        </span>
-        <button id="close-menu-btn" class="mobile-menu-close">&times;</button>
+      <div id="mobile-menu" class="mobile-menu">
+        <!-- Top bar: Logo + Close button -->
+        <div class="mobile-menu-top">
+          <span class="mobile-menu-logo">
+            <img
+              src="./images/logo3.png"
+              href="#home"
+              alt="Saqline Zaman"
+              class="h-[50px] w-[50px] rounded-full"
+            />
+          </span>
+          <button id="close-menu-btn" class="mobile-menu-close">&times;</button>
+        </div>
+
+        <!-- Menu links -->
+        <div class="mobile-menu-links">
+          <a href="#home" class="font-semibold">Home</a>
+          <a href="#about" class="font-semibold">About</a>
+          <a href="#skills" class="font-semibold">Skills</a>
+          <a href="#projects" class="font-semibold">Projects</a>
+          <a href="#experience" class="font-semibold">Experience</a>
+          <a href="#connect" class="font-semibold">Connect</a>
+        </div>
+      </div>
+    </nav>
+
+    <!-- ============ HERO ============ -->
+    <section
+      id="home"
+      class="relative min-h-screen flex flex-col justify-center px-6 md:px-10 pt-40  pb-20 overflow-hidden"
+    >
+      <div
+        class="absolute -top-40 -right-40 w-[500px] h-[500px] rounded-full bg-purple/20 blur-[140px] pointer-events-none"
+      ></div>
+      <div
+        class="absolute bottom-0 -left-40 w-[400px] h-[400px] rounded-full bg-purple-deep/30 blur-[130px] pointer-events-none"
+      ></div>
+
+      <div class="max-w-6xl mx-auto w-full relative z-10">
+        <p class="eyebrow mb-6 hero-line">php artisan serve</p>
+        <h1
+          class="font-display font-semibold leading-[0.95] text-[13vw] md:text-[6.2vw] tracking-tight"
+        >
+          <span class="block overflow-hidden"
+            ><span class="hero-line inline-block">Md. Saqline</span></span
+          >
+          <span class="block overflow-hidden"
+            ><span class="hero-line inline-block grad-text">Zaman</span></span
+          >
+        </h1>
+
+        <div
+          class="mt-8 flex flex-col md:flex-row md:items-start md:justify-between gap-6 md:gap-8"
+        >
+          <p
+            class="hero-line max-w-xl text-muted text-sm sm:text-base md:text-lg leading-relaxed"
+          >
+            Full-stack web developer turning designs into fast, animated,
+            production-ready websites — with PHP, Laravel, JavaScript, React
+            &amp; WordPress.
+          </p>
+
+          <div
+            class="hero-line flex flex-col items-start md:items-start gap-4 w-full md:w-auto"
+          >
+            <!-- ============ CLIENT REVIEW CARD (normal flow, always above buttons, no overlap) ============ -->
+            <div
+              class="review-slider relative w-full sm:max-w-[380px] md:w-[380px] lg:w-[420px] h-[100px] sm:h-[104px] overflow-hidden">
+              <!-- client 1 -->
+              <div
+                class="review-item absolute inset-0 flex items-center gap-3 sm:gap-4 rounded-2xl border border-purple/40 bg-purple/10 backdrop-blur-sm px-4 sm:px-5 py-3 sm:py-4 shadow-[0_0_30px_-10px] shadow-purple/40">
+                <img
+                  src="./images/hafiz.jpg"
+                  alt="Hafiz"
+                  class="w-11 h-11 sm:w-14 sm:h-14 rounded-full object-cover shrink-0 border-2 border-purple/60"
+                />
+                <div class="min-w-0">
+                  <div
+                    class="flex items-center gap-1 text-yellow-400 text-xs sm:text-sm mb-1"
+                  >
+                    ★★★★★
+                  </div>
+                  <p
+                    class="text-muted text-xs sm:text-sm leading-snug line-clamp-2"
+                  >
+                    Great communication, fast and excellent delivery. I will recommend him for web development related work.
+                  </p>
+                  <p
+                    class="grad-text text-xs sm:text-sm mt-1 font-semibold truncate"
+                  >
+                    Tanvir Hafiz, Founder @neuralbrushai
+                  </p>
+                </div>
+              </div>
+              <!-- client 2 -->
+              <div
+                class="review-item absolute inset-0 flex items-center gap-3 sm:gap-4 rounded-2xl border border-purple/40 bg-purple/10 backdrop-blur-sm px-4 sm:px-5 py-3 sm:py-4 shadow-[0_0_30px_-10px] shadow-purple/40"
+              >
+                <img
+                  src="./images/samuel.jpg"
+                  alt="Samuel"
+                  class="w-11 h-11 sm:w-14 sm:h-14 rounded-full object-cover shrink-0 border-2 border-purple/60"
+                />
+                <div class="min-w-0">
+                  <div
+                    class="flex items-center gap-1 text-yellow-400 text-xs sm:text-sm mb-1"
+                  >
+                    ★★★★★
+                  </div>
+                  <p
+                    class="text-muted text-xs sm:text-sm leading-snug line-clamp-2"
+                  >
+                    He answered quickly and did the job right away. I have worked with him twice only but it has been efficient every time.
+                  </p>
+                  <p
+                    class="grad-text text-xs sm:text-sm mt-1 font-semibold truncate"
+                  >
+                    Samuel, Founder @ alphaseduccion
+                  </p>
+                </div>
+              </div>
+
+              <div
+                class="review-item absolute inset-0 flex items-center gap-3 sm:gap-4 rounded-2xl border border-purple/40 bg-purple/10 backdrop-blur-sm px-4 sm:px-5 py-3 sm:py-4 shadow-[0_0_30px_-10px] shadow-purple/40"
+              >
+                <img
+                  src="./images/fahimsir.jpg"
+                  alt="Fahim-Hasan-Munna"
+                  class="w-11 h-11 sm:w-14 sm:h-14 rounded-full object-cover shrink-0 border-2 border-purple/60"
+                />
+                <div class="min-w-0">
+                  <div
+                    class="flex items-center gap-1 text-yellow-400 text-xs sm:text-sm mb-1"
+                  >
+                    ★★★★★
+                  </div>
+                  <p
+                    class="text-muted text-xs sm:text-sm leading-snug line-clamp-2"
+                  >
+                   Well Done & Keep Going My Boy .
+                  </p>
+                  <p
+                    class="grad-text text-xs sm:text-sm mt-1 font-semibold truncate"
+                  >
+                    Fahim Hasan Munna, Mentor
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <!-- buttons: always right after the card, gap-4 = clean fixed space, never overlaps -->
+            <div class="flex gap-3 sm:gap-4 w-full md:w-auto">
+              <a
+                href="./images/Md-Saqline-Zaman-CV.pdf"
+                download="Md-Saqline-Zaman-CV.pdf"
+                class="btn-primary px-5 sm:px-7 py-2.5 sm:py-3 rounded-full text-xs sm:text-sm font-medium"
+                >Download CV</a
+              >
+              <a
+                href="#connect"
+                class="btn-outline px-5 sm:px-7 py-2.5 sm:py-3 rounded-full text-xs sm:text-sm font-medium"
+                >Get in Touch
+              </a>
+            </div>
+          </div>
+        </div>
       </div>
 
-      <!-- Menu links -->
-      <div class="mobile-menu-links">
-        <a href="#home" class="font-semibold">Home</a>
-        <a href="#about" class="font-semibold">About</a>
-        <a href="#skills" class="font-semibold">Skills</a>
-        <a href="#projects" class="font-semibold">Projects</a>
-        <a href="#experience" class="font-semibold">Experience</a>
-        <a href="#connect" class="font-semibold">Connect</a>
+      <div
+        class="absolute bottom-10 left-6 md:left-10 flex flex-col items-center gap-3 opacity-70"
+      >
+        <span class="eyebrow text-[0.65rem]">@csrf</span>
       </div>
-    </div>
-  </nav>
+    </section>
 
-  <!-- ============ HERO ============ -->
-  <section id="home"
-    class="relative min-h-screen flex flex-col justify-center px-6 md:px-10 pt-24 pb-20 overflow-hidden">
-    <div
-      class="absolute -top-40 -right-40 w-[500px] h-[500px] rounded-full bg-purple/20 blur-[140px] pointer-events-none">
-    </div>
-    <div
-      class="absolute bottom-0 -left-40 w-[400px] h-[400px] rounded-full bg-purple-deep/30 blur-[130px] pointer-events-none">
-    </div>
+    <script>
+      document.addEventListener("DOMContentLoaded", () => {
+        const reviewItems = gsap.utils.toArray(".review-item");
+        let activeReview = 0;
 
-    <div class="max-w-6xl mx-auto w-full relative z-10">
-      <p class="eyebrow mb-6 hero-line">php artisan serve</p>
-      <h1 class="font-display font-semibold leading-[0.95] text-[13vw] md:text-[6.2vw] tracking-tight">
-        <span class="block overflow-hidden"><span class="hero-line inline-block">Md. Saqline</span></span>
-        <span class="block overflow-hidden"><span class="hero-line inline-block grad-text">Zaman</span></span>
-      </h1>
-      <div class="mt-8 flex flex-col md:flex-row md:items-end md:justify-between gap-8">
-        <p class="hero-line max-w-xl text-muted text-base md:text-lg leading-relaxed">
-          Full-stack web developer turning designs into fast, animated,
-          production-ready websites — with PHP, Laravel, JavaScript, React
-          &amp; WordPress.
-        </p>
-        <div class="hero-line flex gap-4">
-          <a href="./images/Md-Saqline-Zaman-CV.pdf" download="Md-Saqline-Zaman-CV.pdf"
-            class="btn-primary px-7 py-3 rounded-full text-sm font-medium">Download CV</a>
-          <a href="#connect" class="btn-outline px-7 py-3 rounded-full text-sm font-medium">Get in Touch
+        if (reviewItems.length) {
+          gsap.set(reviewItems, { opacity: 0, y: 16 });
+          gsap.set(reviewItems[0], { opacity: 1, y: 0 });
+
+          function nextReview() {
+            const current = reviewItems[activeReview];
+            const nextIndex = (activeReview + 1) % reviewItems.length;
+            const next = reviewItems[nextIndex];
+
+            const tl = gsap.timeline();
+            tl.to(current, {
+              opacity: 0,
+              y: -16,
+              duration: 0.6,
+              ease: "power2.inOut",
+            }).fromTo(
+              next,
+              { opacity: 0, y: 16 },
+              { opacity: 1, y: 0, duration: 0.6, ease: "power2.inOut" },
+              "<",
+            );
+
+            activeReview = nextIndex;
+          }
+
+          setInterval(nextReview, 4000);
+        }
+      });
+    </script>
+
+    <!-- ============ ABOUT ============ -->
+    <section
+      id="about"
+      class="relative px-6 md:px-10 py-14 md:py-24 border-t border-line"
+    >
+      <div
+        class="max-w-6xl mx-auto grid md:grid-cols-[1fr_1.3fr] gap-14 items-start"
+      >
+        <div class="reveal-up">
+          <div
+            class="photo-frame w-full aspect-[3.5/4] rounded-2xl flex items-center justify-center overflow-hidden"
+          >
+            <img
+              src="./images/moaj2.jpg"
+              alt="Md. Saqline Zaman"
+              class="w-full h-full object-cover rounded-2xl"
+            />
+          </div>
+        </div>
+
+        <div class="reveal-up">
+          <p class="eyebrow mb-4">About</p>
+          <h2 class="font-display text-3xl md:text-4xl font-semibold mb-6">
+            Detail-oriented developer,
+            <span class="text-purple">two years</span> in the field.
+          </h2>
+          <p class="text-muted leading-relaxed mb-4">
+            I build dynamic websites and custom web applications end to end —
+            from PHP includes architecture and Laravel backends to polished,
+            animated front-ends with Tailwind CSS, GSAP and AOS. My focus is
+            shipping work that looks intentional and performs well.
+          </p>
+          <p class="text-muted leading-relaxed mb-10">
+            Currently based in Saudi Arabia, I've delivered hotel booking
+            platforms, multivendor e-commerce sites, renovation and photography
+            brand websites, and agency sites for clients across NZ, AU and
+            beyond.
+          </p>
+
+          <div class="grid grid-cols-2 sm:grid-cols-3 gap-6">
+            <div class="text-center">
+              <p
+                class="font-display text-2xl font-semibold text-purple-glow counter"
+                data-target="2"
+              >
+                0
+              </p>
+              <p class="eyebrow mt-1">Years Exp.</p>
+            </div>
+
+            <div class="text-center">
+              <p
+                class="font-display text-2xl font-semibold text-purple-glow counter"
+                data-target="10"
+              >
+                0
+              </p>
+              <p class="eyebrow mt-1">Projects Shipped</p>
+            </div>
+
+            <div class="col-span-2 flex justify-center sm:col-span-1">
+              <div class="text-center">
+                <p class="font-display text-2xl font-semibold text-purple-glow">
+                  EN / BN
+                </p>
+                <p class="eyebrow mt-1">Languages</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Font Awesome -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+    />
+
+    <!-- ============ SKILLS ============ -->
+    <section
+      id="skills"
+      class="relative px-6 md:px-10 py-14 md:py-24 border-t border-line bg-elevated/40"
+    >
+      <div class="max-w-6xl mx-auto">
+        <p class="eyebrow mb-4 reveal-up text-center md:text-left">Toolkit</p>
+        <h2
+          class="font-display text-3xl md:text-4xl font-semibold mb-12 reveal-up text-center md:text-left"
+        >
+          What I build with
+        </h2>
+
+        <div class="grid md:grid-cols-3 gap-10">
+          <div class="reveal-up text-center md:text-left">
+            <h3 class="text-sm text-muted mb-4 tracking-wide uppercase">
+              Languages &amp; Frameworks
+            </h3>
+            <div class="ball-box" data-box>
+              <div class="skill-ball">
+                <img
+                  src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg"
+                  alt="JavaScript"
+                />
+              </div>
+              <div class="skill-ball">
+                <img
+                  src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/php/php-original.svg"
+                  alt="PHP"
+                />
+              </div>
+              <div class="skill-ball">
+                <img
+                  src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/laravel/laravel-original.svg"
+                  alt="Laravel"
+                />
+              </div>
+              <div class="skill-ball">
+                <img
+                  src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg"
+                  alt="React"
+                />
+              </div>
+              <div class="skill-ball">
+                <img src="./images/wordpress.png" alt="WordPress" />
+              </div>
+            </div>
+          </div>
+
+          <div class="reveal-up text-center md:text-left">
+            <h3 class="text-sm text-muted mb-4 tracking-wide uppercase">
+              Styling &amp; Motion
+            </h3>
+            <div class="ball-box" data-box>
+              <div class="skill-ball">
+                <img
+                  src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/tailwindcss/tailwindcss-original.svg"
+                  alt="Tailwind CSS"
+                />
+              </div>
+              <div class="skill-ball">
+                <img
+                  src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/bootstrap/bootstrap-original.svg"
+                  alt="Bootstrap"
+                />
+              </div>
+              <div class="skill-ball">
+                <img src="./images/gsap.png" alt="GSAP" />
+              </div>
+              <div class="skill-ball">
+                <img src="./images/aos.png" alt="AOS" />
+              </div>
+            </div>
+          </div>
+
+          <div class="reveal-up text-center md:text-left">
+            <h3 class="text-sm text-muted mb-4 tracking-wide uppercase">
+              Tools &amp; Practice
+            </h3>
+            <div class="ball-box" data-box>
+              <div class="skill-ball">
+                <img
+                  src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg"
+                  alt="GitHub"
+                />
+              </div>
+              <div class="skill-ball">
+                <img
+                  src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vercel/vercel-original.svg"
+                  alt="Vercel"
+                />
+              </div>
+              <div class="skill-ball">
+                <img src="./images/word.png" alt="MS Word" />
+              </div>
+              <div class="skill-ball">
+                <img src="./images/exel.webp" alt="MS Excel" />
+              </div>
+              <div class="skill-ball">
+                <img src="./images/powerpoint.png" alt="MS PowerPoint" />
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ PROJECTS ============ -->
+    <section
+      id="projects"
+      class="relative px-6 md:px-10 py-14 md:py-24 border-t border-line"
+    >
+      <div class="max-w-6xl mx-auto">
+        <p class="eyebrow mb-4 reveal-up">Selected Work</p>
+        <h2
+          class="font-display text-3xl md:text-4xl font-semibold mb-14 reveal-up"
+        >
+          Projects I've shipped
+        </h2>
+
+        <div id="project-grid" class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          <a
+            href="https://rnzrenovationltd.online/"
+            target="_blank"
+            rel="noopener"
+            class="project-card window-card rounded-xl overflow-hidden flex flex-col"
+          >
+            <div
+              class="flex items-center gap-1.5 px-4 py-3 border-b border-line"
+            >
+              <span class="dot bg-purple/70"></span
+              ><span class="dot bg-purple/40"></span
+              ><span class="dot bg-purple/20"></span>
+            </div>
+            <div class="p-6 flex-1 flex flex-col">
+              <p class="eyebrow mb-2">ecommerce</p>
+              <h3 class="font-display text-xl font-semibold mb-2">Husn</h3>
+              <p class="text-muted text-sm leading-relaxed flex-1">
+                Multivendor e-commerce website with vendor storefronts and a
+                full shopping experience.
+              </p>
+              <span class="mt-6 text-sm text-purple-glow">Visit site →</span>
+            </div>
+          </a>
+
+          <a
+            href="https://rnzrenovationltd.co.nz/"
+            target="_blank"
+            rel="noopener"
+            class="project-card window-card rounded-xl overflow-hidden flex flex-col"
+          >
+            <div
+              class="flex items-center gap-1.5 px-4 py-3 border-b border-line"
+            >
+              <span class="dot bg-purple/70"></span
+              ><span class="dot bg-purple/40"></span
+              ><span class="dot bg-purple/20"></span>
+            </div>
+            <div class="p-6 flex-1 flex flex-col">
+              <p class="eyebrow mb-2">business site</p>
+              <h3 class="font-display text-xl font-semibold mb-2">
+                RNZ Renovation
+              </h3>
+              <p class="text-muted text-sm leading-relaxed flex-1">
+                Renovation company website built for lead generation with a
+                clean service showcase.
+              </p>
+              <span class="mt-6 text-sm text-purple-glow">Visit site →</span>
+            </div>
+          </a>
+
+          <a
+            href="https://famousbuilding.com.au/"
+            target="_blank"
+            rel="noopener"
+            class="project-card window-card rounded-xl overflow-hidden flex flex-col"
+          >
+            <div
+              class="flex items-center gap-1.5 px-4 py-3 border-b border-line"
+            >
+              <span class="dot bg-purple/70"></span
+              ><span class="dot bg-purple/40"></span
+              ><span class="dot bg-purple/20"></span>
+            </div>
+            <div class="p-6 flex-1 flex flex-col">
+              <p class="eyebrow mb-2">business site</p>
+              <h3 class="font-display text-xl font-semibold mb-2">
+                Famous Property Service
+              </h3>
+              <p class="text-muted text-sm leading-relaxed flex-1">
+                Renovation &amp; property service website focused on
+                trust-building and service clarity.
+              </p>
+              <span class="mt-6 text-sm text-purple-glow">Visit site →</span>
+            </div>
+          </a>
+
+          <a
+            href="https://luminatours.co.nz/"
+            target="_blank"
+            rel="noopener"
+            class="project-card window-card rounded-xl overflow-hidden flex flex-col"
+          >
+            <div
+              class="flex items-center gap-1.5 px-4 py-3 border-b border-line"
+            >
+              <span class="dot bg-purple/70"></span
+              ><span class="dot bg-purple/40"></span
+              ><span class="dot bg-purple/20"></span>
+            </div>
+            <div class="p-6 flex-1 flex flex-col">
+              <p class="eyebrow mb-2">photography</p>
+              <h3 class="font-display text-xl font-semibold mb-2">
+                Lumina Tours
+              </h3>
+              <p class="text-muted text-sm leading-relaxed flex-1">
+                Photography &amp; tours website with a visual, gallery-driven
+                layout.
+              </p>
+              <span class="mt-6 text-sm text-purple-glow">Visit site →</span>
+            </div>
+          </a>
+
+          <a
+            href="https://github.com/saqlinezaman/The-White-Palace"
+            target="_blank"
+            rel="noopener"
+            class="project-card window-card rounded-xl overflow-hidden flex flex-col"
+          >
+            <div
+              class="flex items-center gap-1.5 px-4 py-3 border-b border-line"
+            >
+              <span class="dot bg-purple/70"></span>
+              <span class="dot bg-purple/40"></span>
+              <span class="dot bg-purple/20"></span>
+            </div>
+            <div class="p-6 flex-1 flex flex-col">
+              <p class="eyebrow mb-2">hospitality</p>
+              <h3 class="font-display text-xl font-semibold mb-2">
+                The White Palace
+              </h3>
+              <p class="text-muted text-sm leading-relaxed flex-1">
+                Hotel booking website with room listings, online reservations,
+                and an intuitive booking experience.
+              </p>
+              <span class="mt-6 text-sm text-purple-glow"
+                >View on GitHub →</span
+              >
+            </div>
+          </a>
+
+          <a
+            href="https://clockwork.company/"
+            target="_blank"
+            rel="noopener"
+            class="project-card window-card rounded-xl overflow-hidden flex flex-col"
+          >
+            <div
+              class="flex items-center gap-1.5 px-4 py-3 border-b border-line"
+            >
+              <span class="dot bg-purple/70"></span>
+              <span class="dot bg-purple/40"></span>
+              <span class="dot bg-purple/20"></span>
+            </div>
+            <div class="p-6 flex-1 flex flex-col">
+              <p class="eyebrow mb-2">agency</p>
+              <h3 class="font-display text-xl font-semibold mb-2">Clockwork</h3>
+              <p class="text-muted text-sm leading-relaxed flex-1">
+                Recruitment and staffing agency website with a modern UI,
+                responsive layout, and optimized performance.
+              </p>
+              <span class="mt-6 text-sm text-purple-glow">Visit site →</span>
+            </div>
           </a>
         </div>
       </div>
-    </div>
+    </section>
 
-    <div class="absolute bottom-10 left-6 md:left-10 flex flex-col items-center gap-3 opacity-70">
-      <span class="eyebrow text-[0.65rem]">@csrf</span>
-    </div>
-  </section>
-
-  <!-- ============ ABOUT ============ -->
- <section id="about" class="relative px-6 md:px-10 py-14 md:py-24 border-t border-line">
-  <div class="max-w-6xl mx-auto grid md:grid-cols-[1fr_1.3fr] gap-14 items-start">
-    <div class="reveal-up">
-      <div class="photo-frame w-full aspect-[3.5/4] rounded-2xl flex items-center justify-center overflow-hidden">
-        <img src="./images/moaj2.jpg" alt="Md. Saqline Zaman" class="w-full h-full object-cover rounded-2xl" />
-      </div>
-    </div>
-
-    <div class="reveal-up">
-      <p class="eyebrow mb-4">About</p>
-      <h2 class="font-display text-3xl md:text-4xl font-semibold mb-6">
-        Detail-oriented developer,
-        <span class="text-purple">two years</span> in the field.
-      </h2>
-      <p class="text-muted leading-relaxed mb-4">
-        I build dynamic websites and custom web applications end to end —
-        from PHP includes architecture and Laravel backends to polished,
-        animated front-ends with Tailwind CSS, GSAP and AOS. My focus is
-        shipping work that looks intentional and performs well.
-      </p>
-      <p class="text-muted leading-relaxed mb-10">
-        Currently based in Saudi Arabia, I've delivered hotel booking
-        platforms, multivendor e-commerce sites, renovation and photography
-        brand websites, and agency sites for clients across NZ, AU and
-        beyond.
-      </p>
-
-      <div class="grid grid-cols-2 sm:grid-cols-3 gap-6">
-        <div class="text-center">
-          <p class="font-display text-2xl font-semibold text-purple-glow counter" data-target="2">
-            0
-          </p>
-          <p class="eyebrow mt-1">Years Exp.</p>
-        </div>
-
-        <div class="text-center">
-          <p class="font-display text-2xl font-semibold text-purple-glow counter" data-target="10">
-            0
-          </p>
-          <p class="eyebrow mt-1">Projects Shipped</p>
-        </div>
-
-        <div class="col-span-2 flex justify-center sm:col-span-1">
-          <div class="text-center">
-            <p class="font-display text-2xl font-semibold text-purple-glow">
-              EN / BN
-            </p>
-            <p class="eyebrow mt-1">Languages</p>
+    <!-- ============ EXPERIENCE / EDUCATION ============ -->
+    <section
+      id="experience"
+      class="relative px-6 md:px-10 py-14 md:py-24 border-t border-line bg-elevated/40"
+    >
+      <div class="max-w-6xl mx-auto grid md:grid-cols-2 gap-16">
+        <div>
+          <p class="eyebrow mb-4 reveal-up">Career</p>
+          <h2 class="font-display text-3xl font-semibold mb-10 reveal-up">
+            Experience
+          </h2>
+          <div class="relative pl-8">
+            <span
+              class="timeline-line absolute left-0 top-1 bottom-0 w-px"
+            ></span>
+            <div class="reveal-up relative pb-2">
+              <span
+                class="absolute -left-[33px] top-1.5 w-2.5 h-2.5 rounded-full bg-purple"
+              ></span>
+              <p class="eyebrow mb-1">Oct 2025 – Mar 2026</p>
+              <h3 class="font-display text-lg font-semibold">
+                Full-Stack Web Developer (Intern)
+              </h3>
+              <p class="text-muted text-sm mt-1">Web Solution Firm</p>
+            </div>
           </div>
         </div>
-      </div>
-    </div>
-  </div>
-</section>
 
-<!-- Font Awesome -->
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+        <div>
+          <p class="eyebrow mb-4 reveal-up">Background</p>
+          <h2 class="font-display text-3xl font-semibold mb-10 reveal-up">
+            Education &amp; Certifications
+          </h2>
+          <div class="relative pl-8">
+            <span
+              class="timeline-line absolute left-0 top-1 bottom-0 w-px"
+            ></span>
 
-<!-- ============ SKILLS ============ -->
-<section id="skills" class="relative px-6 md:px-10 py-14 md:py-24 border-t border-line bg-elevated/40">
-  <div class="max-w-6xl mx-auto">
-    <p class="eyebrow mb-4 reveal-up text-center md:text-left">Toolkit</p>
-    <h2 class="font-display text-3xl md:text-4xl font-semibold mb-12 reveal-up text-center md:text-left">
-      What I build with
-    </h2>
+            <div class="reveal-up relative pb-8">
+              <span
+                class="absolute -left-[33px] top-1.5 w-2.5 h-2.5 rounded-full bg-purple"
+              ></span>
+              <p class="eyebrow mb-1">Diploma</p>
+              <h3 class="font-display text-lg font-semibold">
+                Diploma in Computer Technology
+              </h3>
+              <p class="text-muted text-sm mt-1">
+                Kurigram Polytechnic Institute — CGPA 2.83
+              </p>
+            </div>
 
-    <div class="grid md:grid-cols-3 gap-10">
+            <div class="reveal-up relative pb-8">
+              <span
+                class="absolute -left-[33px] top-1.5 w-2.5 h-2.5 rounded-full bg-purple"
+              ></span>
+              <p class="eyebrow mb-1">SSC</p>
+              <h3 class="font-display text-lg font-semibold">
+                Refrigeration &amp; Air-Conditioning
+              </h3>
+              <p class="text-muted text-sm mt-1">
+                Habiganj Govt. Technical School and College — GPA 4.36
+              </p>
+            </div>
 
-      <div class="reveal-up text-center md:text-left">
-        <h3 class="text-sm text-muted mb-4 tracking-wide uppercase">Languages &amp; Frameworks</h3>
-        <div class="ball-box" data-box>
-          <div class="skill-ball"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" alt="JavaScript"></div>
-          <div class="skill-ball"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/php/php-original.svg" alt="PHP"></div>
-          <div class="skill-ball"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/laravel/laravel-original.svg" alt="Laravel"></div>
-          <div class="skill-ball"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg" alt="React"></div>
-          <div class="skill-ball"><img src="./images/wordpress.png" alt="WordPress"></div>
+            <div class="reveal-up relative pb-8">
+              <span
+                class="absolute -left-[33px] top-1.5 w-2.5 h-2.5 rounded-full bg-purple"
+              ></span>
+              <p class="eyebrow mb-1">Certificate</p>
+              <h3 class="font-display text-lg font-semibold">
+                Professional Web Development (Full-Stack)
+              </h3>
+              <p class="text-muted text-sm mt-1">ISDB BISEW</p>
+            </div>
+
+            <div class="reveal-up relative">
+              <span
+                class="absolute -left-[33px] top-1.5 w-2.5 h-2.5 rounded-full bg-purple"
+              ></span>
+              <h3 class="font-display text-lg font-semibold">
+                PHP &amp; Laravel Certificate
+              </h3>
+              <p class="text-muted text-sm mt-1">Creative IT Institute</p>
+            </div>
+          </div>
         </div>
       </div>
+    </section>
 
-      <div class="reveal-up text-center md:text-left">
-        <h3 class="text-sm text-muted mb-4 tracking-wide uppercase">Styling &amp; Motion</h3>
-        <div class="ball-box" data-box>
-          <div class="skill-ball"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/tailwindcss/tailwindcss-original.svg" alt="Tailwind CSS"></div>
-          <div class="skill-ball"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/bootstrap/bootstrap-original.svg" alt="Bootstrap"></div>
-          <div class="skill-ball"><img src="./images/gsap.png" alt="GSAP"></div>
-          <div class="skill-ball"><img src="./images/aos.png" alt="AOS"></div>
-        </div>
-      </div>
-
-      <div class="reveal-up text-center md:text-left">
-        <h3 class="text-sm text-muted mb-4 tracking-wide uppercase">Tools &amp; Practice</h3>
-        <div class="ball-box" data-box>
-          <div class="skill-ball"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg" alt="GitHub"></div>
-          <div class="skill-ball"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vercel/vercel-original.svg" alt="Vercel"></div>
-          <div class="skill-ball"><img src="./images/word.png" alt="MS Word"></div>
-          <div class="skill-ball"><img src="./images/exel.webp" alt="MS Excel"></div>
-          <div class="skill-ball"><img src="./images/powerpoint.png" alt="MS PowerPoint"></div>
-        </div>
-      </div>
-
-    </div>
-  </div>
-</section>
-
-  <!-- ============ PROJECTS ============ -->
-  <section id="projects" class="relative px-6 md:px-10  py-14 md:py-24 border-t border-line">
-    <div class="max-w-6xl mx-auto">
-      <p class="eyebrow mb-4 reveal-up">Selected Work</p>
-      <h2 class="font-display text-3xl md:text-4xl font-semibold mb-14 reveal-up">
-        Projects I've shipped
-      </h2>
-
-      <div id="project-grid" class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
-        <a href="https://rnzrenovationltd.online/" target="_blank" rel="noopener"
-          class="project-card window-card rounded-xl overflow-hidden flex flex-col">
-          <div class="flex items-center gap-1.5 px-4 py-3 border-b border-line">
-            <span class="dot bg-purple/70"></span><span class="dot bg-purple/40"></span><span
-              class="dot bg-purple/20"></span>
-          </div>
-          <div class="p-6 flex-1 flex flex-col">
-            <p class="eyebrow mb-2">ecommerce</p>
-            <h3 class="font-display text-xl font-semibold mb-2">Husn</h3>
-            <p class="text-muted text-sm leading-relaxed flex-1">
-              Multivendor e-commerce website with vendor storefronts and a
-              full shopping experience.
-            </p>
-            <span class="mt-6 text-sm text-purple-glow">Visit site →</span>
-          </div>
-        </a>
-
-        <a href="https://rnzrenovationltd.co.nz/" target="_blank" rel="noopener"
-          class="project-card window-card rounded-xl overflow-hidden flex flex-col">
-          <div class="flex items-center gap-1.5 px-4 py-3 border-b border-line">
-            <span class="dot bg-purple/70"></span><span class="dot bg-purple/40"></span><span
-              class="dot bg-purple/20"></span>
-          </div>
-          <div class="p-6 flex-1 flex flex-col">
-            <p class="eyebrow mb-2">business site</p>
-            <h3 class="font-display text-xl font-semibold mb-2">
-              RNZ Renovation
-            </h3>
-            <p class="text-muted text-sm leading-relaxed flex-1">
-              Renovation company website built for lead generation with a
-              clean service showcase.
-            </p>
-            <span class="mt-6 text-sm text-purple-glow">Visit site →</span>
-          </div>
-        </a>
-
-        <a href="https://famousbuilding.com.au/" target="_blank" rel="noopener"
-          class="project-card window-card rounded-xl overflow-hidden flex flex-col">
-          <div class="flex items-center gap-1.5 px-4 py-3 border-b border-line">
-            <span class="dot bg-purple/70"></span><span class="dot bg-purple/40"></span><span
-              class="dot bg-purple/20"></span>
-          </div>
-          <div class="p-6 flex-1 flex flex-col">
-            <p class="eyebrow mb-2">business site</p>
-            <h3 class="font-display text-xl font-semibold mb-2">
-              Famous Property Service
-            </h3>
-            <p class="text-muted text-sm leading-relaxed flex-1">
-              Renovation &amp; property service website focused on
-              trust-building and service clarity.
-            </p>
-            <span class="mt-6 text-sm text-purple-glow">Visit site →</span>
-          </div>
-        </a>
-
-        <a href="https://luminatours.co.nz/" target="_blank" rel="noopener"
-          class="project-card window-card rounded-xl overflow-hidden flex flex-col">
-          <div class="flex items-center gap-1.5 px-4 py-3 border-b border-line">
-            <span class="dot bg-purple/70"></span><span class="dot bg-purple/40"></span><span
-              class="dot bg-purple/20"></span>
-          </div>
-          <div class="p-6 flex-1 flex flex-col">
-            <p class="eyebrow mb-2">photography</p>
-            <h3 class="font-display text-xl font-semibold mb-2">
-              Lumina Tours
-            </h3>
-            <p class="text-muted text-sm leading-relaxed flex-1">
-              Photography &amp; tours website with a visual, gallery-driven
-              layout.
-            </p>
-            <span class="mt-6 text-sm text-purple-glow">Visit site →</span>
-          </div>
-        </a>
-
-        <a href="https://github.com/saqlinezaman/The-White-Palace" target="_blank" rel="noopener"
-          class="project-card window-card rounded-xl overflow-hidden flex flex-col">
-          <div class="flex items-center gap-1.5 px-4 py-3 border-b border-line">
-            <span class="dot bg-purple/70"></span>
-            <span class="dot bg-purple/40"></span>
-            <span class="dot bg-purple/20"></span>
-          </div>
-          <div class="p-6 flex-1 flex flex-col">
-            <p class="eyebrow mb-2">hospitality</p>
-            <h3 class="font-display text-xl font-semibold mb-2">
-              The White Palace
-            </h3>
-            <p class="text-muted text-sm leading-relaxed flex-1">
-              Hotel booking website with room listings, online reservations,
-              and an intuitive booking experience.
-            </p>
-            <span class="mt-6 text-sm text-purple-glow">View on GitHub →</span>
-          </div>
-        </a>
-
-        <a href="https://clockwork.company/" target="_blank" rel="noopener"
-          class="project-card window-card rounded-xl overflow-hidden flex flex-col">
-          <div class="flex items-center gap-1.5 px-4 py-3 border-b border-line">
-            <span class="dot bg-purple/70"></span>
-            <span class="dot bg-purple/40"></span>
-            <span class="dot bg-purple/20"></span>
-          </div>
-          <div class="p-6 flex-1 flex flex-col">
-            <p class="eyebrow mb-2">agency</p>
-            <h3 class="font-display text-xl font-semibold mb-2">Clockwork</h3>
-            <p class="text-muted text-sm leading-relaxed flex-1">
-              Recruitment and staffing agency website with a modern UI,
-              responsive layout, and optimized performance.
-            </p>
-            <span class="mt-6 text-sm text-purple-glow">Visit site →</span>
-          </div>
-        </a>
-      </div>
-    </div>
-  </section>
-
-  <!-- ============ EXPERIENCE / EDUCATION ============ -->
-  <section id="experience" class="relative px-6 md:px-10  py-14 md:py-24 border-t border-line bg-elevated/40">
-    <div class="max-w-6xl mx-auto grid md:grid-cols-2 gap-16">
-      <div>
-        <p class="eyebrow mb-4 reveal-up">Career</p>
-        <h2 class="font-display text-3xl font-semibold mb-10 reveal-up">
-          Experience
+    <!-- ============ CONNECT ============ -->
+    <section
+      id="connect"
+      class="relative px-6 md:px-10 py-14 md:py-24 border-t border-line overflow-hidden"
+    >
+      <div
+        class="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] h-[300px] rounded-full bg-purple/15 blur-[130px] pointer-events-none"
+      ></div>
+      <div class="max-w-6xl mx-auto text-center relative z-10">
+        <p class="eyebrow mb-4 reveal-up">Let's build</p>
+        <h2
+          class="font-display text-4xl md:text-6xl font-semibold mb-10 leading-tight reveal-up"
+        >
+          Have a project in mind?<br class="hidden md:block" />
+          <span class="grad-text">Let's talk.</span>
         </h2>
-        <div class="relative pl-8">
-          <span class="timeline-line absolute left-0 top-1 bottom-0 w-px"></span>
-          <div class="reveal-up relative pb-2">
-            <span class="absolute -left-[33px] top-1.5 w-2.5 h-2.5 rounded-full bg-purple"></span>
-            <p class="eyebrow mb-1">Oct 2025 – Mar 2026</p>
-            <h3 class="font-display text-lg font-semibold">
-              Full-Stack Web Developer (Intern)
-            </h3>
-            <p class="text-muted text-sm mt-1">Web Solution Firm</p>
-          </div>
+        <div class="reveal-up flex flex-wrap justify-center gap-4">
+          <a
+            href="https://www.linkedin.com/in/saqlinezamanmoaz/"
+            target="_blank"
+            rel="noopener"
+            class="btn-primary px-7 py-3 rounded-full text-sm font-medium"
+            >LinkedIn</a
+          >
+          <a
+            href="https://github.com/saqlinezaman"
+            target="_blank"
+            rel="noopener"
+            class="btn-outline px-7 py-3 rounded-full text-sm font-medium"
+            >GitHub</a
+          >
         </div>
       </div>
+    </section>
 
-      <div>
-        <p class="eyebrow mb-4 reveal-up">Background</p>
-        <h2 class="font-display text-3xl font-semibold mb-10 reveal-up">
-          Education &amp; Certifications
-        </h2>
-        <div class="relative pl-8">
-          <span class="timeline-line absolute left-0 top-1 bottom-0 w-px"></span>
-
-          <div class="reveal-up relative pb-8">
-            <span class="absolute -left-[33px] top-1.5 w-2.5 h-2.5 rounded-full bg-purple"></span>
-            <p class="eyebrow mb-1">Diploma</p>
-            <h3 class="font-display text-lg font-semibold">
-              Diploma in Computer Technology
-            </h3>
-            <p class="text-muted text-sm mt-1">
-              Kurigram Polytechnic Institute — CGPA 2.83
-            </p>
-          </div>
-
-          <div class="reveal-up relative pb-8">
-            <span class="absolute -left-[33px] top-1.5 w-2.5 h-2.5 rounded-full bg-purple"></span>
-            <p class="eyebrow mb-1">SSC</p>
-            <h3 class="font-display text-lg font-semibold">
-              Refrigeration &amp; Air-Conditioning
-            </h3>
-            <p class="text-muted text-sm mt-1">
-              Habiganj Govt. Technical School and College — GPA 4.36
-            </p>
-          </div>
-
-          <div class="reveal-up relative pb-8">
-            <span class="absolute -left-[33px] top-1.5 w-2.5 h-2.5 rounded-full bg-purple"></span>
-            <p class="eyebrow mb-1">Certificate</p>
-            <h3 class="font-display text-lg font-semibold">
-              Professional Web Development (Full-Stack)
-            </h3>
-            <p class="text-muted text-sm mt-1">ISDB BISEW</p>
-          </div>
-
-          <div class="reveal-up relative">
-            <span class="absolute -left-[33px] top-1.5 w-2.5 h-2.5 rounded-full bg-purple"></span>
-            <h3 class="font-display text-lg font-semibold">
-              PHP &amp; Laravel Certificate
-            </h3>
-            <p class="text-muted text-sm mt-1">Creative IT Institute</p>
-          </div>
-        </div>
+    <footer class="px-6 md:px-10 py-8 border-t border-line">
+      <div
+        class="max-w-6xl mx-auto flex flex-col md:flex-row items-center justify-between gap-4 text-sm text-muted"
+      >
+        <p class="font-mono text-xs">
+          © <span id="year"></span> Md. Saqline Zaman
+        </p>
       </div>
-    </div>
-  </section>
+    </footer>
 
-  <!-- ============ CONNECT ============ -->
-  <section id="connect" class="relative px-6 md:px-10  py-14 md:py-24 border-t border-line overflow-hidden">
-    <div
-      class="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] h-[300px] rounded-full bg-purple/15 blur-[130px] pointer-events-none">
-    </div>
-    <div class="max-w-6xl mx-auto text-center relative z-10">
-      <p class="eyebrow mb-4 reveal-up">Let's build</p>
-      <h2 class="font-display text-4xl md:text-6xl font-semibold mb-10 leading-tight reveal-up">
-        Have a project in mind?<br class="hidden md:block" />
-        <span class="grad-text">Let's talk.</span>
-      </h2>
-      <div class="reveal-up flex flex-wrap justify-center gap-4">
-        <a href="https://www.linkedin.com/in/saqlinezamanmoaz/" target="_blank" rel="noopener"
-          class="btn-primary px-7 py-3 rounded-full text-sm font-medium">LinkedIn</a>
-        <a href="https://github.com/saqlinezaman" target="_blank" rel="noopener"
-          class="btn-outline px-7 py-3 rounded-full text-sm font-medium">GitHub</a>
-      </div>
-    </div>
-  </section>
+    <script>
+      (function () {
+        // Create preloader element
+        const preloader = document.createElement("div");
+        preloader.id = "preloader";
+        preloader.style.cssText =
+          "position:fixed; inset:0; z-index:99999; display:flex; align-items:center; justify-content:center; background:#030303; backdrop-filter:blur(20px); -webkit-backdrop-filter:blur(20px); transition:opacity 0.6s ease;";
 
-  <footer class="px-6 md:px-10 py-8 border-t border-line">
-    <div class="max-w-6xl mx-auto flex flex-col md:flex-row items-center justify-between gap-4 text-sm text-muted">
-      <p class="font-mono text-xs">
-        © <span id="year"></span> Md. Saqline Zaman
-      </p>
-    </div>
-  </footer>
+        const text = document.createElement("h1");
+        text.style.cssText =
+          "font-family:'Space Grotesk', sans-serif; font-weight:600; font-size:1.6rem; letter-spacing:-0.01em; background:linear-gradient(120deg,#F5F5F7 30%,#C4B5FD 65%,#8B5CF6 100%); -webkit-background-clip:text; background-clip:text; color:transparent; white-space:nowrap;";
 
-  <script>
-    (function () {
-      // Create preloader element
-      const preloader = document.createElement("div");
-      preloader.id = "preloader";
-      preloader.style.cssText =
-        "position:fixed; inset:0; z-index:99999; display:flex; align-items:center; justify-content:center; background:#030303; backdrop-filter:blur(20px); -webkit-backdrop-filter:blur(20px); transition:opacity 0.6s ease;";
+        const cursor = document.createElement("span");
+        cursor.style.cssText =
+          "display:inline-block; width:2px; margin-left:2px; background:#8B5CF6; animation:blinkCursor 0.8s step-end infinite;";
 
-      const text = document.createElement("h1");
-      text.style.cssText =
-        "font-family:'Space Grotesk', sans-serif; font-weight:600; font-size:1.6rem; letter-spacing:-0.01em; background:linear-gradient(120deg,#F5F5F7 30%,#C4B5FD 65%,#8B5CF6 100%); -webkit-background-clip:text; background-clip:text; color:transparent; white-space:nowrap;";
+        // Cursor blink keyframes
+        const styleTag = document.createElement("style");
+        styleTag.textContent =
+          "@keyframes blinkCursor { 0%, 100% { opacity:1; } 50% { opacity:0; } }";
+        document.head.appendChild(styleTag);
 
-      const cursor = document.createElement("span");
-      cursor.style.cssText =
-        "display:inline-block; width:2px; margin-left:2px; background:#8B5CF6; animation:blinkCursor 0.8s step-end infinite;";
+        preloader.appendChild(text);
+        preloader.appendChild(cursor);
+        document.body.appendChild(preloader);
+        document.body.style.overflow = "hidden";
 
-      // Cursor blink keyframes
-      const styleTag = document.createElement("style");
-      styleTag.textContent =
-        "@keyframes blinkCursor { 0%, 100% { opacity:1; } 50% { opacity:0; } }";
-      document.head.appendChild(styleTag);
+        const message = "< Hey, I'm Saqline Zaman />";
+        let i = 0;
 
-      preloader.appendChild(text);
-      preloader.appendChild(cursor);
-      document.body.appendChild(preloader);
-      document.body.style.overflow = "hidden";
-
-      const message = "< Hey, I'm Saqline Zaman />";
-      let i = 0;
-
-      function typeWriter() {
-        if (i < message.length) {
-          text.textContent += message.charAt(i);
-          i++;
-          setTimeout(typeWriter, 30);
+        function typeWriter() {
+          if (i < message.length) {
+            text.textContent += message.charAt(i);
+            i++;
+            setTimeout(typeWriter, 30);
+          }
         }
-      }
-      typeWriter();
+        typeWriter();
 
-      // Fade out and remove after 2s
-      setTimeout(() => {
-        preloader.style.opacity = "0";
+        // Fade out and remove after 2s
         setTimeout(() => {
-          preloader.remove();
-          document.body.style.overflow = "";
-        }, 600);
-      }, 1600);
-    })();
-    document.getElementById("year").textContent = new Date().getFullYear();
+          preloader.style.opacity = "0";
+          setTimeout(() => {
+            preloader.remove();
+            document.body.style.overflow = "";
+          }, 600);
+        }, 1600);
+      })();
+      document.getElementById("year").textContent = new Date().getFullYear();
 
-    const menuBtn = document.getElementById("menu-btn");
-    const closeMenuBtn = document.getElementById("close-menu-btn");
-    const mobileMenu = document.getElementById("mobile-menu");
+      const menuBtn = document.getElementById("menu-btn");
+      const closeMenuBtn = document.getElementById("close-menu-btn");
+      const mobileMenu = document.getElementById("mobile-menu");
 
-    menuBtn.addEventListener("click", () => {
-      mobileMenu.classList.add("show");
-    });
+      menuBtn.addEventListener("click", () => {
+        mobileMenu.classList.add("show");
+      });
 
-    closeMenuBtn.addEventListener("click", () => {
-      mobileMenu.classList.remove("show");
-    });
-
-    mobileMenu.querySelectorAll("a").forEach((a) =>
-      a.addEventListener("click", () => {
+      closeMenuBtn.addEventListener("click", () => {
         mobileMenu.classList.remove("show");
-      }),
-    );
+      });
 
-
-    /* ---------------- Custom cursor ---------------- */
-    const dot = document.getElementById("cursor-dot");
-    const ring = document.getElementById("cursor-ring");
-    let mouseX = 0,
-      mouseY = 0,
-      ringX = 0,
-      ringY = 0;
-
-    window.addEventListener("mousemove", (e) => {
-      mouseX = e.clientX;
-      mouseY = e.clientY;
-      dot.style.left = mouseX + "px";
-      dot.style.top = mouseY + "px";
-    });
-
-    function animateRing() {
-      ringX += (mouseX - ringX) * 0.16;
-      ringY += (mouseY - ringY) * 0.16;
-      ring.style.left = ringX + "px";
-      ring.style.top = ringY + "px";
-      requestAnimationFrame(animateRing);
-    }
-    animateRing();
-
-    const hoverables = document.querySelectorAll(
-      "a, button, .skill-chip, .project-card",
-    );
-    hoverables.forEach((el) => {
-      el.addEventListener("mouseenter", () => ring.classList.add("hovered"));
-      el.addEventListener("mouseleave", () =>
-        ring.classList.remove("hovered"),
+      mobileMenu.querySelectorAll("a").forEach((a) =>
+        a.addEventListener("click", () => {
+          mobileMenu.classList.remove("show");
+        }),
       );
-    });
 
-    /* ---------------- GSAP animations ---------------- */
-    gsap.registerPlugin(ScrollTrigger);
+      /* ---------------- Custom cursor ---------------- */
+      const dot = document.getElementById("cursor-dot");
+      const ring = document.getElementById("cursor-ring");
+      let mouseX = 0,
+        mouseY = 0,
+        ringX = 0,
+        ringY = 0;
 
-    // Hero entrance
-    gsap.set(".hero-line", { y: 40, opacity: 0 });
-    gsap.to(".hero-line", {
-      y: 0,
-      opacity: 1,
-      duration: 1,
-      ease: "power3.out",
-      stagger: 0.12,
-      delay: 0.2,
-    });
+      window.addEventListener("mousemove", (e) => {
+        mouseX = e.clientX;
+        mouseY = e.clientY;
+        dot.style.left = mouseX + "px";
+        dot.style.top = mouseY + "px";
+      });
 
-    // Section reveal-on-scroll
-    document.querySelectorAll(".reveal-up").forEach((el) => {
-      gsap.set(el, { y: 50, opacity: 0 });
+      function animateRing() {
+        ringX += (mouseX - ringX) * 0.16;
+        ringY += (mouseY - ringY) * 0.16;
+        ring.style.left = ringX + "px";
+        ring.style.top = ringY + "px";
+        requestAnimationFrame(animateRing);
+      }
+      animateRing();
+
+      const hoverables = document.querySelectorAll(
+        "a, button, .skill-chip, .project-card",
+      );
+      hoverables.forEach((el) => {
+        el.addEventListener("mouseenter", () => ring.classList.add("hovered"));
+        el.addEventListener("mouseleave", () =>
+          ring.classList.remove("hovered"),
+        );
+      });
+
+      /* ---------------- GSAP animations ---------------- */
+      gsap.registerPlugin(ScrollTrigger);
+
+      // Hero entrance
+      gsap.set(".hero-line", { y: 40, opacity: 0 });
+      gsap.to(".hero-line", {
+        y: 0,
+        opacity: 1,
+        duration: 1,
+        ease: "power3.out",
+        stagger: 0.12,
+        delay: 0.2,
+      });
+
+      // Section reveal-on-scroll
+      document.querySelectorAll(".reveal-up").forEach((el) => {
+        gsap.set(el, { y: 50, opacity: 0 });
+        ScrollTrigger.create({
+          trigger: el,
+          start: "top 85%",
+          onEnter: () =>
+            gsap.to(el, {
+              y: 0,
+              opacity: 1,
+              duration: 0.9,
+              ease: "power3.out",
+            }),
+          once: true,
+        });
+      });
+
+      // toolkit section reveal
+      (function () {
+        const boxes = document.querySelectorAll("[data-box]");
+
+        boxes.forEach((box) => {
+          const balls = Array.from(box.querySelectorAll(".skill-ball"));
+          const state = [];
+
+          function rectSize() {
+            return { w: box.clientWidth, h: box.clientHeight };
+          }
+
+          const { w: initW, h: initH } = rectSize();
+
+          balls.forEach((ball) => {
+            const size = ball.offsetWidth || 60;
+            let placed = false;
+            let x = 0,
+              y = 0;
+            let attempts = 0;
+
+            while (!placed && attempts < 200) {
+              x = Math.random() * Math.max(1, initW - size);
+              y = Math.random() * Math.max(1, initH - size);
+              placed = true;
+              for (const s of state) {
+                const dx = x + size / 2 - (s.x + s.size / 2);
+                const dy = y + size / 2 - (s.y + s.size / 2);
+                const dist = Math.sqrt(dx * dx + dy * dy);
+                if (dist < size / 2 + s.size / 2) {
+                  placed = false;
+                  break;
+                }
+              }
+              attempts++;
+            }
+
+            const angle = Math.random() * Math.PI * 2;
+            const speed = 0.35 + Math.random() * 0.25;
+            state.push({
+              el: ball,
+              size,
+              x,
+              y,
+              vx: Math.cos(angle) * speed,
+              vy: Math.sin(angle) * speed,
+              dragging: false,
+            });
+          });
+
+          let mouseX = null,
+            mouseY = null,
+            mouseActive = false;
+
+          box.addEventListener("pointermove", (e) => {
+            const rect = box.getBoundingClientRect();
+            mouseX = e.clientX - rect.left;
+            mouseY = e.clientY - rect.top;
+            mouseActive = true;
+          });
+          box.addEventListener("pointerleave", () => {
+            mouseActive = false;
+          });
+
+          state.forEach((s) => {
+            let offsetX = 0,
+              offsetY = 0;
+            s.el.addEventListener("pointerdown", (e) => {
+              s.dragging = true;
+              s.el.setPointerCapture(e.pointerId);
+              const rect = box.getBoundingClientRect();
+              offsetX = e.clientX - rect.left - s.x;
+              offsetY = e.clientY - rect.top - s.y;
+            });
+            s.el.addEventListener("pointermove", (e) => {
+              if (!s.dragging) return;
+              const rect = box.getBoundingClientRect();
+              const px = s.x,
+                py = s.y;
+              s.x = e.clientX - rect.left - offsetX;
+              s.y = e.clientY - rect.top - offsetY;
+              s.vx = s.x - px;
+              s.vy = s.y - py;
+            });
+            s.el.addEventListener("pointerup", (e) => {
+              s.dragging = false;
+              s.el.releasePointerCapture(e.pointerId);
+              const len = Math.hypot(s.vx, s.vy);
+              if (len < 0.2) {
+                const angle = Math.random() * Math.PI * 2;
+                const speed = 0.35 + Math.random() * 0.25;
+                s.vx = Math.cos(angle) * speed;
+                s.vy = Math.sin(angle) * speed;
+              }
+            });
+            s.el.addEventListener("pointercancel", () => {
+              s.dragging = false;
+            });
+          });
+
+          function resolveCollisions() {
+            for (let i = 0; i < state.length; i++) {
+              for (let j = i + 1; j < state.length; j++) {
+                const a = state[i],
+                  b = state[j];
+                const ar = a.size / 2,
+                  br = b.size / 2;
+                const acx = a.x + ar,
+                  acy = a.y + ar;
+                const bcx = b.x + br,
+                  bcy = b.y + br;
+                let dx = bcx - acx;
+                let dy = bcy - acy;
+                let dist = Math.sqrt(dx * dx + dy * dy);
+                const minDist = ar + br;
+
+                if (dist < minDist) {
+                  if (dist === 0) {
+                    dx = (Math.random() - 0.5) * 0.1;
+                    dy = (Math.random() - 0.5) * 0.1;
+                    dist = 0.01;
+                  }
+                  const overlap = (minDist - dist) / 2;
+                  const nx = dx / dist;
+                  const ny = dy / dist;
+
+                  if (!a.dragging) {
+                    a.x -= nx * overlap;
+                    a.y -= ny * overlap;
+                  }
+                  if (!b.dragging) {
+                    b.x += nx * overlap;
+                    b.y += ny * overlap;
+                  }
+
+                  const avx = a.vx,
+                    avy = a.vy;
+                  const bvx = b.vx,
+                    bvy = b.vy;
+
+                  if (!a.dragging && !b.dragging) {
+                    a.vx = bvx;
+                    a.vy = bvy;
+                    b.vx = avx;
+                    b.vy = avy;
+                  } else if (a.dragging && !b.dragging) {
+                    b.vx = nx * 1.2;
+                    b.vy = ny * 1.2;
+                  } else if (b.dragging && !a.dragging) {
+                    a.vx = -nx * 1.2;
+                    a.vy = -ny * 1.2;
+                  }
+                }
+              }
+            }
+          }
+
+          function step() {
+            const { w, h } = rectSize();
+
+            state.forEach((s) => {
+              if (!s.dragging) {
+                s.x += s.vx;
+                s.y += s.vy;
+
+                if (mouseActive) {
+                  const cx = s.x + s.size / 2;
+                  const cy = s.y + s.size / 2;
+                  const dx = cx - mouseX;
+                  const dy = cy - mouseY;
+                  const dist = Math.sqrt(dx * dx + dy * dy);
+                  const minDist = 120;
+                  if (dist < minDist && dist > 0.01) {
+                    const force = (minDist - dist) / minDist;
+                    s.vx += (dx / dist) * force * 1.4;
+                    s.vy += (dy / dist) * force * 1.4;
+                  }
+                }
+
+                const speed = Math.hypot(s.vx, s.vy);
+                const minSpeed = 1.0;
+                const maxSpeed = 2.0;
+                if (speed < minSpeed && speed > 0.001) {
+                  const boost = minSpeed / speed;
+                  s.vx *= boost;
+                  s.vy *= boost;
+                } else if (speed > maxSpeed) {
+                  const damp = maxSpeed / speed;
+                  s.vx *= damp;
+                  s.vy *= damp;
+                }
+
+                s.vx *= 0.985;
+                s.vy *= 0.985;
+
+                if (s.x < 0) {
+                  s.x = 0;
+                  s.vx = Math.abs(s.vx);
+                }
+                if (s.y < 0) {
+                  s.y = 0;
+                  s.vy = Math.abs(s.vy);
+                }
+                if (s.x > w - s.size) {
+                  s.x = w - s.size;
+                  s.vx = -Math.abs(s.vx);
+                }
+                if (s.y > h - s.size) {
+                  s.y = h - s.size;
+                  s.vy = -Math.abs(s.vy);
+                }
+              } else {
+                s.x = Math.max(0, Math.min(w - s.size, s.x));
+                s.y = Math.max(0, Math.min(h - s.size, s.y));
+              }
+            });
+
+            resolveCollisions();
+
+            state.forEach((s) => {
+              s.el.style.transform = `translate(${s.x}px, ${s.y}px)`;
+            });
+
+            requestAnimationFrame(step);
+          }
+
+          requestAnimationFrame(step);
+
+          window.addEventListener("resize", () => {
+            const { w, h } = rectSize();
+            state.forEach((s) => {
+              s.x = Math.min(s.x, Math.max(0, w - s.size));
+              s.y = Math.min(s.y, Math.max(0, h - s.size));
+            });
+          });
+        });
+      })();
+
+      // Project cards stagger
+      gsap.set(".project-card", { y: 60, opacity: 0 });
       ScrollTrigger.create({
-        trigger: el,
-        start: "top 85%",
+        trigger: "#project-grid",
+        start: "top 80%",
         onEnter: () =>
-          gsap.to(el, {
+          gsap.to(".project-card", {
             y: 0,
             opacity: 1,
-            duration: 0.9,
+            duration: 0.8,
+            stagger: 0.1,
             ease: "power3.out",
           }),
         once: true,
       });
-    });
 
-    // toolkit section reveal
-    (function(){
-  const boxes = document.querySelectorAll('[data-box]');
-
-  boxes.forEach(box => {
-    const balls = Array.from(box.querySelectorAll('.skill-ball'));
-    const state = [];
-
-    function rectSize(){
-      return { w: box.clientWidth, h: box.clientHeight };
-    }
-
-    const { w: initW, h: initH } = rectSize();
-
-    balls.forEach((ball) => {
-      const size = ball.offsetWidth || 60;
-      let placed = false;
-      let x = 0, y = 0;
-      let attempts = 0;
-
-      while (!placed && attempts < 200){
-        x = Math.random() * Math.max(1, initW - size);
-        y = Math.random() * Math.max(1, initH - size);
-        placed = true;
-        for (const s of state){
-          const dx = (x + size/2) - (s.x + s.size/2);
-          const dy = (y + size/2) - (s.y + s.size/2);
-          const dist = Math.sqrt(dx*dx + dy*dy);
-          if (dist < (size/2 + s.size/2)){
-            placed = false;
-            break;
-          }
-        }
-        attempts++;
-      }
-
-      const angle = Math.random() * Math.PI * 2;
-      const speed = 0.35 + Math.random() * 0.25;
-      state.push({
-        el: ball,
-        size,
-        x, y,
-        vx: Math.cos(angle) * speed,
-        vy: Math.sin(angle) * speed,
-        dragging: false
-      });
-    });
-
-    let mouseX = null, mouseY = null, mouseActive = false;
-
-    box.addEventListener('pointermove', (e) => {
-      const rect = box.getBoundingClientRect();
-      mouseX = e.clientX - rect.left;
-      mouseY = e.clientY - rect.top;
-      mouseActive = true;
-    });
-    box.addEventListener('pointerleave', () => { mouseActive = false; });
-
-    state.forEach(s => {
-      let offsetX = 0, offsetY = 0;
-      s.el.addEventListener('pointerdown', (e) => {
-        s.dragging = true;
-        s.el.setPointerCapture(e.pointerId);
-        const rect = box.getBoundingClientRect();
-        offsetX = (e.clientX - rect.left) - s.x;
-        offsetY = (e.clientY - rect.top) - s.y;
-      });
-      s.el.addEventListener('pointermove', (e) => {
-        if (!s.dragging) return;
-        const rect = box.getBoundingClientRect();
-        const px = s.x, py = s.y;
-        s.x = (e.clientX - rect.left) - offsetX;
-        s.y = (e.clientY - rect.top) - offsetY;
-        s.vx = s.x - px;
-        s.vy = s.y - py;
-      });
-      s.el.addEventListener('pointerup', (e) => {
-        s.dragging = false;
-        s.el.releasePointerCapture(e.pointerId);
-        const len = Math.hypot(s.vx, s.vy);
-        if (len < 0.2){
-          const angle = Math.random() * Math.PI * 2;
-          const speed = 0.35 + Math.random() * 0.25;
-          s.vx = Math.cos(angle) * speed;
-          s.vy = Math.sin(angle) * speed;
-        }
-      });
-      s.el.addEventListener('pointercancel', () => { s.dragging = false; });
-    });
-
-    function resolveCollisions(){
-      for (let i = 0; i < state.length; i++){
-        for (let j = i + 1; j < state.length; j++){
-          const a = state[i], b = state[j];
-          const ar = a.size / 2, br = b.size / 2;
-          const acx = a.x + ar, acy = a.y + ar;
-          const bcx = b.x + br, bcy = b.y + br;
-          let dx = bcx - acx;
-          let dy = bcy - acy;
-          let dist = Math.sqrt(dx*dx + dy*dy);
-          const minDist = ar + br;
-
-          if (dist < minDist){
-            if (dist === 0){
-              dx = (Math.random() - 0.5) * 0.1;
-              dy = (Math.random() - 0.5) * 0.1;
-              dist = 0.01;
-            }
-            const overlap = (minDist - dist) / 2;
-            const nx = dx / dist;
-            const ny = dy / dist;
-
-            if (!a.dragging){ a.x -= nx * overlap; a.y -= ny * overlap; }
-            if (!b.dragging){ b.x += nx * overlap; b.y += ny * overlap; }
-
-            const avx = a.vx, avy = a.vy;
-            const bvx = b.vx, bvy = b.vy;
-
-            if (!a.dragging && !b.dragging){
-              a.vx = bvx; a.vy = bvy;
-              b.vx = avx; b.vy = avy;
-            } else if (a.dragging && !b.dragging){
-              b.vx = nx * 1.2;
-              b.vy = ny * 1.2;
-            } else if (b.dragging && !a.dragging){
-              a.vx = -nx * 1.2;
-              a.vy = -ny * 1.2;
-            }
-          }
-        }
-      }
-    }
-
-    function step(){
-      const { w, h } = rectSize();
-
-      state.forEach(s => {
-        if (!s.dragging){
-          s.x += s.vx;
-          s.y += s.vy;
-
-          if (mouseActive){
-            const cx = s.x + s.size / 2;
-            const cy = s.y + s.size / 2;
-            const dx = cx - mouseX;
-            const dy = cy - mouseY;
-            const dist = Math.sqrt(dx*dx + dy*dy);
-            const minDist = 120;
-            if (dist < minDist && dist > 0.01){
-              const force = (minDist - dist) / minDist;
-              s.vx += (dx / dist) * force * 1.4;
-              s.vy += (dy / dist) * force * 1.4;
-            }
-          }
-
-          const speed = Math.hypot(s.vx, s.vy);
-          const minSpeed = 1.0;
-          const maxSpeed = 2.0;
-          if (speed < minSpeed && speed > 0.001){
-            const boost = minSpeed / speed;
-            s.vx *= boost;
-            s.vy *= boost;
-          } else if (speed > maxSpeed){
-            const damp = maxSpeed / speed;
-            s.vx *= damp;
-            s.vy *= damp;
-          }
-
-          s.vx *= 0.985;
-          s.vy *= 0.985;
-
-          if (s.x < 0){ s.x = 0; s.vx = Math.abs(s.vx); }
-          if (s.y < 0){ s.y = 0; s.vy = Math.abs(s.vy); }
-          if (s.x > w - s.size){ s.x = w - s.size; s.vx = -Math.abs(s.vx); }
-          if (s.y > h - s.size){ s.y = h - s.size; s.vy = -Math.abs(s.vy); }
-        } else {
-          s.x = Math.max(0, Math.min(w - s.size, s.x));
-          s.y = Math.max(0, Math.min(h - s.size, s.y));
-        }
+      // Skill chips
+      gsap.set(".skill-chip", { scale: 0.8, opacity: 0 });
+      document.querySelectorAll("#skills .flex.flex-wrap").forEach((group) => {
+        ScrollTrigger.create({
+          trigger: group,
+          start: "top 85%",
+          onEnter: () =>
+            gsap.to(group.querySelectorAll(".skill-chip"), {
+              scale: 1,
+              opacity: 1,
+              duration: 0.5,
+              stagger: 0.05,
+              ease: "back.out(1.7)",
+            }),
+          once: true,
+        });
       });
 
-      resolveCollisions();
-
-      state.forEach(s => {
-        s.el.style.transform = `translate(${s.x}px, ${s.y}px)`;
+      // Counters
+      document.querySelectorAll(".counter").forEach((counter) => {
+        const target = +counter.dataset.target;
+        ScrollTrigger.create({
+          trigger: counter,
+          start: "top 90%",
+          once: true,
+          onEnter: () => {
+            gsap.to(counter, {
+              innerText: target,
+              duration: 1.4,
+              snap: { innerText: 1 },
+              ease: "power2.out",
+            });
+          },
+        });
       });
 
-      requestAnimationFrame(step);
-    }
-
-    requestAnimationFrame(step);
-
-    window.addEventListener('resize', () => {
-      const { w, h } = rectSize();
-      state.forEach(s => {
-        s.x = Math.min(s.x, Math.max(0, w - s.size));
-        s.y = Math.min(s.y, Math.max(0, h - s.size));
-      });
-    });
-  });
-})();
-
-    // Project cards stagger
-    gsap.set(".project-card", { y: 60, opacity: 0 });
-    ScrollTrigger.create({
-      trigger: "#project-grid",
-      start: "top 80%",
-      onEnter: () =>
-        gsap.to(".project-card", {
-          y: 0,
-          opacity: 1,
-          duration: 0.8,
-          stagger: 0.1,
-          ease: "power3.out",
-        }),
-      once: true,
-    });
-
-    // Skill chips
-    gsap.set(".skill-chip", { scale: 0.8, opacity: 0 });
-    document.querySelectorAll("#skills .flex.flex-wrap").forEach((group) => {
+      // Nav background on scroll (subtle)
       ScrollTrigger.create({
-        trigger: group,
-        start: "top 85%",
-        onEnter: () =>
-          gsap.to(group.querySelectorAll(".skill-chip"), {
-            scale: 1,
-            opacity: 1,
-            duration: 0.5,
-            stagger: 0.05,
-            ease: "back.out(1.7)",
-          }),
-        once: true,
-      });
-    });
-
-    // Counters
-    document.querySelectorAll(".counter").forEach((counter) => {
-      const target = +counter.dataset.target;
-      ScrollTrigger.create({
-        trigger: counter,
-        start: "top 90%",
-        once: true,
-        onEnter: () => {
-          gsap.to(counter, {
-            innerText: target,
-            duration: 1.4,
-            snap: { innerText: 1 },
-            ease: "power2.out",
-          });
+        start: "top -80",
+        onUpdate: (self) => {
+          const nav = document.querySelector("nav");
+          if (self.scroll() > 80)
+            nav.classList.add("shadow-[0_1px_20px_-5px_rgba(139,92,246,0.25)]");
+          else
+            nav.classList.remove(
+              "shadow-[0_1px_20px_-5px_rgba(139,92,246,0.25)]",
+            );
         },
       });
-    });
-
-    // Nav background on scroll (subtle)
-    ScrollTrigger.create({
-      start: "top -80",
-      onUpdate: (self) => {
-        const nav = document.querySelector("nav");
-        if (self.scroll() > 80)
-          nav.classList.add("shadow-[0_1px_20px_-5px_rgba(139,92,246,0.25)]");
-        else
-          nav.classList.remove(
-            "shadow-[0_1px_20px_-5px_rgba(139,92,246,0.25)]",
-          );
-      },
-    });
-  </script>
-</body>
-
+    </script>
+  </body>
 </html>
